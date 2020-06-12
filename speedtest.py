@@ -23,9 +23,9 @@ def write_response(res):
     with open('speedtest.csv', 'a+') as f:
 
         if os.stat('speedtest.csv').st_size == 0:
-            f.write('Date,Time,Ping (ms),Download (Mbit/s),Upload (Mbit/s)\r\n')
+            f.write('Date,Time,Ping (ms),Download (Mbit/s),Upload (Mbit/s)\n')
 
-        f.write('{},{},{},{},{}\r\n'.format(time.strftime('%m/%d/%y'),
+        f.write('{},{},{},{},{}\n'.format(time.strftime('%m/%d/%y'),
                                             time.strftime('%H:%M'), ping, download, upload))
 
 
