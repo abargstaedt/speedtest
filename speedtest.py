@@ -25,8 +25,8 @@ def write_response(res):
         if os.stat('speedtest.csv').st_size == 0:
             f.write('Date,Time,Ping (ms),Download (Mbit/s),Upload (Mbit/s)\n')
 
-        f.write('{},{},{},{},{}\n'.format(time.strftime('%m/%d/%y'),
-                                            time.strftime('%H:%M'), ping, download, upload))
+        f.write('{},{},{},{},{}\n'.format(time.strftime('%Y-%m-%d'),
+                                          time.strftime('%H:%M:%S'), ping, download, upload))
 
 
 res = subprocess.Popen('speedtest-cli --simple',
