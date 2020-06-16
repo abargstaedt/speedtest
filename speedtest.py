@@ -10,16 +10,14 @@ def parse_response(res):
     download = re.findall(r'Download:\s(.*?)\s', res, re.MULTILINE)
     upload = re.findall(r'Upload:\s(.*?)\s', res, re.MULTILINE)
 
-    return [
+    return (
         ping[0].replace(',', '.'),
         download[0].replace(',', '.'),
         upload[0].replace(',', '.')
-    ]
+    )
 
 
-def write_response(res):
-    [ping, download, upload] = parse_response(res)
-
+def write_data(ping, download, upload):
     with open('speedtest.csv', 'a+') as f:
 
         if os.stat('speedtest.csv').st_size == 0:
@@ -32,6 +30,10 @@ def write_response(res):
 res = subprocess.Popen('speedtest-cli --simple',
                        shell=True, stdout=subprocess.PIPE).stdout.read().decode('utf-8')
 
-print(res)
+if res:
+    print(res)
+    (ping, download, upload) = parse_response(res)
+else:
+    (ping, download, upload) = (0.0, 0.0, 0.0)
 
-write_response(res)
+write_data(ping, download, upload)
