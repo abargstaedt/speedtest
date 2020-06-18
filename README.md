@@ -1,4 +1,4 @@
-This script produces a `speedtest.csv` file with a line of *speedtest* results added for each invokation like this:
+This script produces a `./data/speedtest.csv` file with a line of *speedtest* results added for each invokation like this:
 
 ```
 Date,Time,Ping (ms),Download (Mbit/s),Upload (Mbit/s)
@@ -7,8 +7,9 @@ Date,Time,Ping (ms),Download (Mbit/s),Upload (Mbit/s)
 2020-06-13,00:06:33,35.099,75.69,7.19
 ```
 
-Install the **speedtest-cli** with pip in advance:
+Build and run the docker image with your [timezone](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones):
 
 ```
-pip install speedtest-cli
+docker build -t speedtest .
+docker run -e TZ=Europe/Berlin -v ${PWD}/data:/data speedtest
 ```

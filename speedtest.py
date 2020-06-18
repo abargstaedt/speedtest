@@ -18,9 +18,9 @@ def parse_response(res):
 
 
 def write_data(ping, download, upload):
-    with open('speedtest.csv', 'a+') as f:
+    with open('./data/speedtest.csv', 'a+') as f:
 
-        if os.stat('speedtest.csv').st_size == 0:
+        if os.stat('./data/speedtest.csv').st_size == 0:
             f.write('Date,Time,Ping (ms),Download (Mbit/s),Upload (Mbit/s)\n')
 
         f.write('{},{},{},{},{}\n'.format(time.strftime('%Y-%m-%d'),
