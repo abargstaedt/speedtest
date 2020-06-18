@@ -7,9 +7,8 @@ Date,Time,Ping (ms),Download (Mbit/s),Upload (Mbit/s)
 2020-06-13,00:06:33,35.099,75.69,7.19
 ```
 
-Build and run the docker image with your [timezone](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones):
+Load the docker image from *Docker Hub* and run it providing your [timezone](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones):
 
 ```
-docker build -t speedtest .
-docker run -e TZ=Europe/Berlin -v ${PWD}/data:/data speedtest
+docker run -e TZ=Europe/Berlin -v ${PWD}/data:/data --name speedtest abargstaedt/speedtest
 ```
