@@ -21,9 +21,9 @@ def write_data(ping, download, upload):
     with open('./data/speedtest.csv', 'a+') as f:
 
         if os.stat('./data/speedtest.csv').st_size == 0:
-            f.write('Date,Time,Ping (ms),Download (Mbit/s),Upload (Mbit/s)\n')
+            f.write('Date\tTime\tPing (ms)\tDownload (Mbit/s)\tUpload (Mbit/s)\n')
 
-        f.write('{},{},{},{},{}\n'.format(time.strftime('%Y-%m-%d'),
+        f.write('{}\t{}\t{}\t{}\t{}\n'.format(time.strftime('%Y-%m-%d'),
                                           time.strftime('%H:%M:%S'), ping, download, upload))
 
 
